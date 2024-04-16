@@ -5,6 +5,7 @@ from blog.forms import CommentForm
 import logging
 
 
+
 logger = logging.getLogger(__name__)
 
 

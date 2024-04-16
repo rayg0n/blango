@@ -2,6 +2,9 @@ from django.contrib.auth import get_user_model
 from django import template
 from django.utils.html import format_html
 from blog.models import Post
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -85,6 +88,7 @@ def author_details_tag(context):
 
 @register.inclusion_tag("blog/post-list.html")
 def recent_posts(post):
+    logger.debug("Loaded %d recent posts for post %d", len(posts), post.pk)
     posts = Post.objects.exclude(pk=post.pk)[:5]
     return {"title": "Recent Posts", "posts": posts}
 
